@@ -35,6 +35,15 @@ class SecondViewController: UIViewController {
         return button
     }()
     
+    private var gradientLayer: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        gradient.opacity = 0.5
+        gradient.colors = [#colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1).cgColor, #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1).cgColor]
+        return gradient
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,11 +53,14 @@ class SecondViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        gradientLayer.frame = view.bounds
     }
     
     private func setupViews() {
-        view.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+        view.layer.insertSublayer(gradientLayer, at: 0)
         
         view.addSubview(imageView)
         view.addSubview(mainButton)
