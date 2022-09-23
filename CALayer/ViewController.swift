@@ -35,6 +35,14 @@ class ViewController: UIViewController {
         return button
     }()
     
+    private var gradientLayer: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        gradient.colors = [#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1).cgColor, #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1).cgColor]
+        return gradient
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,11 +53,13 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        gradientLayer.frame = view.bounds
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
     }
 
     private func setupViews() {
         view.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        view.layer.insertSublayer(gradientLayer, at: 0)
         
         view.addSubview(imageView)
         view.addSubview(mainButton)
@@ -63,7 +73,7 @@ class ViewController: UIViewController {
 
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
             imageView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
