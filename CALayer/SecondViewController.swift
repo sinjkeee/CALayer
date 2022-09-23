@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SecondViewController.swift
 //  CALayer
 //
 //  Created by Vladimir Sekerko on 23.09.2022.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class SecondViewController: UIViewController {
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "image")
-        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "dog")
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .clear
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 5
@@ -23,8 +23,8 @@ class ViewController: UIViewController {
     
     private lazy var mainButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Tap me!", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        button.setTitle("Go back!", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         button.layer.cornerRadius = 10
         button.layer.shadowOffset = CGSize(width: 0, height: 5)
         button.layer.shadowRadius = 5
@@ -44,24 +44,22 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
     }
-
+    
     private func setupViews() {
-        view.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
         
         view.addSubview(imageView)
         view.addSubview(mainButton)
     }
     
     @objc private func mainButtonTapped() {
-        let controller = SecondViewController()
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true, completion: nil)
+        dismiss(animated: true)
     }
-
+    
     private func setConstraints() {
+        
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -75,4 +73,3 @@ class ViewController: UIViewController {
         ])
     }
 }
-
