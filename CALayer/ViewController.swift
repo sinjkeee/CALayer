@@ -8,6 +8,26 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private let shapeLayer: CAShapeLayer = {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.lineWidth = 20
+        shapeLayer.lineCap = .round
+        shapeLayer.strokeEnd = 1
+        shapeLayer.fillColor = nil
+        shapeLayer.strokeColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
+        return shapeLayer
+    }()
+    
+    private let overShapeLayer: CAShapeLayer = {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.lineWidth = 20
+        shapeLayer.lineCap = .round
+        shapeLayer.strokeEnd = 0
+        shapeLayer.fillColor = nil
+        shapeLayer.strokeColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        return shapeLayer
+    }()
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -55,20 +75,36 @@ class ViewController: UIViewController {
         
         gradientLayer.frame = view.bounds
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        configShapeLayer(shapeLayer)
+        configShapeLayer(overShapeLayer)
     }
 
     private func setupViews() {
         view.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         view.layer.insertSublayer(gradientLayer, at: 0)
+        view.layer.addSublayer(shapeLayer)
+        view.layer.addSublayer(overShapeLayer)
         
         view.addSubview(imageView)
         view.addSubview(mainButton)
     }
     
+    private func configShapeLayer(_ shapeLayer: CAShapeLayer) {
+        shapeLayer.frame = view.bounds
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: view.frame.width / 2 - 100, y: mainButton.frame.minY - 100))
+        path.addLine(to: CGPoint(x: view.frame.width / 2 + 100, y: mainButton.frame.minY - 100))
+        shapeLayer.path = path.cgPath
+    }
+    
     @objc private func mainButtonTapped() {
-        let controller = SecondViewController()
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true, completion: nil)
+        overShapeLayer.strokeEnd += 0.2
+        if overShapeLayer.strokeEnd == 1 {
+            let controller = SecondViewController()
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: true, completion: nil)
+            overShapeLayer.strokeEnd = 0
+        }
     }
 
     private func setConstraints() {
