@@ -98,15 +98,27 @@ class ViewController: UIViewController {
     }
     
     @objc private func mainButtonTapped() {
-        overShapeLayer.strokeEnd += 0.2
-        if overShapeLayer.strokeEnd == 1 {
-            let controller = SecondViewController()
-            controller.modalPresentationStyle = .fullScreen
-            present(controller, animated: true, completion: nil)
-            overShapeLayer.strokeEnd = 0
-        }
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.toValue = 1 // до какого значения хотим увеличивать
+        animation.duration = 2 // продолжительность анимации
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut) // анимация должна проходить плавно в самом конце
+        animation.fillMode = CAMediaTimingFillMode.both // чтобы анимация не удалялась сразу после завершения
+        animation.isRemovedOnCompletion = true // хотим чтобы она удалялась после завершения
+        animation.delegate = self
+        overShapeLayer.add(animation, forKey: nil)
     }
+}
 
+//MARK: - CAAnimationDelegate
+extension ViewController: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) { // действие, которое выполнится после завершения анимации
+        let controller = SecondViewController()
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true, completion: nil)
+    }
+}
+
+extension ViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
@@ -121,4 +133,3 @@ class ViewController: UIViewController {
         ])
     }
 }
-
