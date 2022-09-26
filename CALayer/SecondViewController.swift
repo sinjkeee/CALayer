@@ -51,6 +51,20 @@ class SecondViewController: UIViewController {
         return button
     }()
     
+    private lazy var toThirdVCButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Next!", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        button.layer.cornerRadius = 10
+        button.layer.shadowOffset = CGSize(width: 0, height: 5)
+        button.layer.shadowRadius = 5
+        button.layer.shadowOpacity = 0.5
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(toThirdVCButtonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private var gradientLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.startPoint = CGPoint(x: 0, y: 0)
@@ -84,6 +98,7 @@ class SecondViewController: UIViewController {
         view.layer.addSublayer(overShapeLayer)
         view.addSubview(imageView)
         view.addSubview(mainButton)
+        view.addSubview(toThirdVCButton)
     }
     
     /*
@@ -118,6 +133,11 @@ class SecondViewController: UIViewController {
         makeAnimation()
     }
     
+    @objc private func toThirdVCButtonTapped() {
+        let controller = ThirdViewController()
+        present(controller, animated: true)
+    }
+    
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
@@ -126,10 +146,15 @@ class SecondViewController: UIViewController {
             imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
             imageView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
             
-            mainButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            mainButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 150),
             mainButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             mainButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            mainButton.heightAnchor.constraint(equalToConstant: 50)
+            mainButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            toThirdVCButton.topAnchor.constraint(equalTo: mainButton.bottomAnchor, constant: 20),
+            toThirdVCButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            toThirdVCButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            toThirdVCButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }
