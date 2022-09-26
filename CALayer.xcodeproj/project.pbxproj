@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A30A7C928E1DDDC00CE8BF1 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A30A7C828E1DDDC00CE8BF1 /* ThirdViewController.swift */; };
 		2AABF26828DDB6F200881E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AABF26728DDB6F200881E2D /* AppDelegate.swift */; };
 		2AABF26A28DDB6F200881E2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AABF26928DDB6F200881E2D /* SceneDelegate.swift */; };
 		2AABF26C28DDB6F200881E2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AABF26B28DDB6F200881E2D /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A30A7C828E1DDDC00CE8BF1 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		2AABF26428DDB6F200881E2D /* CALayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CALayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AABF26728DDB6F200881E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AABF26928DDB6F200881E2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				2AABF26928DDB6F200881E2D /* SceneDelegate.swift */,
 				2AABF26B28DDB6F200881E2D /* ViewController.swift */,
 				2AABF27B28DDD95400881E2D /* SecondViewController.swift */,
+				2A30A7C828E1DDDC00CE8BF1 /* ThirdViewController.swift */,
 				2AABF26D28DDB6F200881E2D /* Main.storyboard */,
 				2AABF27028DDB6F400881E2D /* Assets.xcassets */,
 				2AABF27228DDB6F400881E2D /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 			files = (
 				2AABF27C28DDD95400881E2D /* SecondViewController.swift in Sources */,
 				2AABF26C28DDB6F200881E2D /* ViewController.swift in Sources */,
+				2A30A7C928E1DDDC00CE8BF1 /* ThirdViewController.swift in Sources */,
 				2AABF26828DDB6F200881E2D /* AppDelegate.swift in Sources */,
 				2AABF26A28DDB6F200881E2D /* SceneDelegate.swift in Sources */,
 			);
