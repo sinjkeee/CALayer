@@ -9,14 +9,30 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
+    private let shapeLayer: CAShapeLayer = {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.lineWidth = 20
+        shapeLayer.strokeEnd = 1
+        shapeLayer.fillColor = nil
+        shapeLayer.strokeColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
+        return shapeLayer
+    }()
+    
+    private let overShapeLayer: CAShapeLayer = {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.lineWidth = 20
+        shapeLayer.strokeEnd = 0
+        shapeLayer.fillColor = nil
+        shapeLayer.strokeColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        return shapeLayer
+    }()
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "dog")
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .clear
         imageView.layer.masksToBounds = true
-        imageView.layer.borderWidth = 5
-        imageView.layer.borderColor = UIColor.white.cgColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -56,18 +72,50 @@ class SecondViewController: UIViewController {
         
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
         gradientLayer.frame = view.bounds
+        configShapeLayer(shapeLayer)
+        configShapeLayer(overShapeLayer)
     }
     
     private func setupViews() {
         view.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         view.layer.insertSublayer(gradientLayer, at: 0)
         
+        view.layer.addSublayer(shapeLayer)
+        view.layer.addSublayer(overShapeLayer)
         view.addSubview(imageView)
         view.addSubview(mainButton)
     }
     
+    /*
+     var full = CGFloat(Double.pi * 2)
+     var quarter = CGFloat(Double.pi / 2)
+     var half = CGFloat(Double.pi)
+     var threeQuarter = CGFloat(3 * Double.pi / 2)
+     */
+    
+    private func configShapeLayer(_ shapeLayer: CAShapeLayer) {
+        shapeLayer.frame = view.bounds
+        let path = UIBezierPath(arcCenter: imageView.center,
+                                radius: imageView.frame.width / 2,
+                                startAngle: 0.0,
+                                endAngle: CGFloat(Double.pi * 2),
+                                clockwise: true)
+        shapeLayer.path = path.cgPath
+    }
+    
+    private func makeAnimation() {
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.toValue = 1
+        animation.duration = 2
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        animation.fillMode = CAMediaTimingFillMode.both
+        animation.isRemovedOnCompletion = true
+        animation.delegate = self
+        overShapeLayer.add(animation, forKey: nil)
+    }
+    
     @objc private func mainButtonTapped() {
-        dismiss(animated: true)
+        makeAnimation()
     }
     
     private func setConstraints() {
@@ -83,5 +131,12 @@ class SecondViewController: UIViewController {
             mainButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             mainButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+}
+
+
+extension SecondViewController: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        dismiss(animated: true)
     }
 }
