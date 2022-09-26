@@ -97,7 +97,7 @@ class ViewController: UIViewController {
         shapeLayer.path = path.cgPath
     }
     
-    @objc private func mainButtonTapped() {
+    private func makeAnimation() {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue = 1 // до какого значения хотим увеличивать
         animation.duration = 2 // продолжительность анимации
@@ -106,6 +106,10 @@ class ViewController: UIViewController {
         animation.isRemovedOnCompletion = true // хотим чтобы она удалялась после завершения
         animation.delegate = self
         overShapeLayer.add(animation, forKey: nil)
+    }
+    
+    @objc private func mainButtonTapped() {
+        makeAnimation()
     }
 }
 
