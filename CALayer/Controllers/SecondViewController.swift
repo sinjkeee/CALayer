@@ -139,6 +139,18 @@ class SecondViewController: UIViewController {
         let controller = ThirdViewController()
         present(controller, animated: true)
     }
+}
+
+//MARK: - CAAnimationDelegate
+extension SecondViewController: CAAnimationDelegate {
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        dismiss(animated: true)
+    }
+}
+
+//MARK: - setConstraints
+extension SecondViewController {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
@@ -157,13 +169,5 @@ class SecondViewController: UIViewController {
             toThirdVCButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             toThirdVCButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-    }
-}
-
-//MARK: - CAAnimationDelegate
-extension SecondViewController: CAAnimationDelegate {
-    
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        dismiss(animated: true)
     }
 }
