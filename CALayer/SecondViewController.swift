@@ -91,6 +91,7 @@ class SecondViewController: UIViewController {
     }
     
     private func setupViews() {
+        
         view.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         view.layer.insertSublayer(gradientLayer, at: 0)
         
@@ -109,6 +110,7 @@ class SecondViewController: UIViewController {
      */
     
     private func configShapeLayer(_ shapeLayer: CAShapeLayer) {
+        
         shapeLayer.frame = view.bounds
         let path = UIBezierPath(arcCenter: imageView.center,
                                 radius: imageView.frame.width / 2,
@@ -119,6 +121,7 @@ class SecondViewController: UIViewController {
     }
     
     private func makeAnimation() {
+        
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue = 1
         animation.duration = 2
@@ -130,10 +133,12 @@ class SecondViewController: UIViewController {
     }
     
     @objc private func mainButtonTapped() {
+        
         makeAnimation()
     }
     
     @objc private func toThirdVCButtonTapped() {
+        
         let controller = ThirdViewController()
         present(controller, animated: true)
     }
@@ -159,7 +164,7 @@ class SecondViewController: UIViewController {
     }
 }
 
-
+//MARK: - CAAnimationDelegate
 extension SecondViewController: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         dismiss(animated: true)

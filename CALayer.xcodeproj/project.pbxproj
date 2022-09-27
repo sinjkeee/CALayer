@@ -15,6 +15,7 @@
 		2AABF27128DDB6F400881E2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AABF27028DDB6F400881E2D /* Assets.xcassets */; };
 		2AABF27428DDB6F400881E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AABF27228DDB6F400881E2D /* LaunchScreen.storyboard */; };
 		2AABF27C28DDD95400881E2D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AABF27B28DDD95400881E2D /* SecondViewController.swift */; };
+		2AB738A828E3345F00541AA3 /* ReplicatorLayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB738A728E3345F00541AA3 /* ReplicatorLayerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		2AABF27328DDB6F400881E2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AABF27528DDB6F400881E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AABF27B28DDD95400881E2D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		2AB738A728E3345F00541AA3 /* ReplicatorLayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicatorLayerVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				2AABF26B28DDB6F200881E2D /* ViewController.swift */,
 				2AABF27B28DDD95400881E2D /* SecondViewController.swift */,
 				2A30A7C828E1DDDC00CE8BF1 /* ThirdViewController.swift */,
+				2AB738A728E3345F00541AA3 /* ReplicatorLayerVC.swift */,
 				2AABF26D28DDB6F200881E2D /* Main.storyboard */,
 				2AABF27028DDB6F400881E2D /* Assets.xcassets */,
 				2AABF27228DDB6F400881E2D /* LaunchScreen.storyboard */,
@@ -147,6 +150,7 @@
 				2AABF27C28DDD95400881E2D /* SecondViewController.swift in Sources */,
 				2AABF26C28DDB6F200881E2D /* ViewController.swift in Sources */,
 				2A30A7C928E1DDDC00CE8BF1 /* ThirdViewController.swift in Sources */,
+				2AB738A828E3345F00541AA3 /* ReplicatorLayerVC.swift in Sources */,
 				2AABF26828DDB6F200881E2D /* AppDelegate.swift in Sources */,
 				2AABF26A28DDB6F200881E2D /* SceneDelegate.swift in Sources */,
 			);

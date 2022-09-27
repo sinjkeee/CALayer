@@ -80,6 +80,7 @@ class ViewController: UIViewController {
     }
 
     private func setupViews() {
+        
         view.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         view.layer.insertSublayer(gradientLayer, at: 0)
         view.layer.addSublayer(shapeLayer)
@@ -90,6 +91,7 @@ class ViewController: UIViewController {
     }
     
     private func configShapeLayer(_ shapeLayer: CAShapeLayer) {
+        
         shapeLayer.frame = view.bounds
         let path = UIBezierPath()
         path.move(to: CGPoint(x: view.frame.width / 2 - 100, y: mainButton.frame.minY - 100))
@@ -98,6 +100,7 @@ class ViewController: UIViewController {
     }
     
     private func makeAnimation() {
+        
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue = 1 // до какого значения хотим увеличивать
         animation.duration = 2 // продолжительность анимации
@@ -115,6 +118,7 @@ class ViewController: UIViewController {
 
 //MARK: - CAAnimationDelegate
 extension ViewController: CAAnimationDelegate {
+    
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) { // действие, которое выполнится после завершения анимации
         let controller = SecondViewController()
         controller.modalPresentationStyle = .fullScreen
@@ -123,7 +127,9 @@ extension ViewController: CAAnimationDelegate {
 }
 
 extension ViewController {
+    
     private func setConstraints() {
+        
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
