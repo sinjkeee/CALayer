@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         shapeLayer.strokeColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return shapeLayer
     }()
-
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "image")
@@ -78,7 +78,7 @@ class ViewController: UIViewController {
         configShapeLayer(shapeLayer)
         configShapeLayer(overShapeLayer)
     }
-
+    
     private func setupViews() {
         view.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         

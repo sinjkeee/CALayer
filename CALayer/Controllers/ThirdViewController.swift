@@ -64,6 +64,10 @@ class ThirdViewController: UIViewController {
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }
+}
+
+//MARK: - setConstraints
+extension ThirdViewController {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
