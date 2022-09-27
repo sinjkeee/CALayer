@@ -34,7 +34,6 @@ class ReplicatorLayerVC: UIViewController {
     }
     
     private func setupViews() {
-        
         view.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         
         replicatorLayer = CAReplicatorLayer()
@@ -45,7 +44,6 @@ class ReplicatorLayerVC: UIViewController {
     }
     
     private func startAnimation(delay: TimeInterval, replicates: Int) {
-        
         replicatorLayer.instanceCount = replicates
         let angle = CGFloat(Double.pi * 2) / CGFloat(replicates)
         replicatorLayer.instanceTransform = CATransform3DMakeRotation(angle, 0.0, 0.0, 1.0)
