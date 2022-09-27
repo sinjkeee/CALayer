@@ -45,7 +45,6 @@ class ThirdViewController: UIViewController {
     }
     
     private func setupViews() {
-        
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         view.addSubview(customView)
@@ -53,7 +52,6 @@ class ThirdViewController: UIViewController {
     }
     
     private func createShapeLayer() {
-        
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = UIBezierPath(roundedRect: customView.bounds,
                                        byRoundingCorners: [.topLeft, .bottomRight],
@@ -62,14 +60,12 @@ class ThirdViewController: UIViewController {
     }
     
     @objc private func mainButtonTapped() {
-        
         let controller = ReplicatorLayerVC()
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }
     
     private func setConstraints() {
-        
         NSLayoutConstraint.activate([
             customView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             customView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
